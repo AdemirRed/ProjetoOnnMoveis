@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import multer from 'multer';
 import multerConfig from './config/multer';
+import authMiddleware from './middlewares/auth';
+
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import ProductController from './app/controllers/ProductController';
@@ -12,9 +14,11 @@ const upload = multer(multerConfig);
 routes.post('/usuarios', UserController.store);
 // Rota para criar uma nova sessão
 routes.post('/sessao', SessionController.store);
+
+
 // Rota para criar um novo produto com upload de arquivo
 routes.post('/produtos', upload.single('file'), ProductController.store);
 // Rota para listar todos os produtos
-routes.get('/produtos', ProductController.index);
+routes.get('/produtos', authMiddleware,ProductController.index);
 
 export default routes;
