@@ -1,3 +1,4 @@
+import e from 'express';
 import Product from '../models/Products';
 import { v4 } from 'uuid';
 import * as Yup from 'yup';
@@ -47,6 +48,8 @@ class ProductController {
   // Método para listar todos os produtos
   async index(req, res) {
     const products = await Product.findAll();
+
+    
     return res.json(products);
   }
 }

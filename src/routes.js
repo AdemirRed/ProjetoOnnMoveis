@@ -15,10 +15,12 @@ routes.post('/usuarios', UserController.store);
 // Rota para criar uma nova sessão
 routes.post('/sessao', SessionController.store);
 
+// Middleware de autenticação
+routes.use(authMiddleware);
 
 // Rota para criar um novo produto com upload de arquivo
 routes.post('/produtos', upload.single('file'), ProductController.store);
 // Rota para listar todos os produtos
-routes.get('/produtos', authMiddleware,ProductController.index);
+routes.get('/produtos', ProductController.index);
 
 export default routes;
