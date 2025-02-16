@@ -1,4 +1,3 @@
-import e from 'express';
 import Product from '../models/Products';
 import { v4 } from 'uuid';
 import * as Yup from 'yup';
