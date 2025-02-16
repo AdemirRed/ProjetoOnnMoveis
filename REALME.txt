@@ -1,0 +1,2 @@
+Commando para criar o container no Docker:
+    docker run --name onnmoveis -e POSTGRES_PASSWORD=postgres -p 5433:5433 -d postgres
